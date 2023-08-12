@@ -3,7 +3,7 @@
 </p>
 </div>
 
-# Banco-de-dados-RH
+# Banco de Dados RH
 
 No Case abaixo, vamos mergulhar em um breve estudo na estruturação de um Banco de Dados da área de Rh de uma organização.
 
