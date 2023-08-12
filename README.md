@@ -37,7 +37,9 @@ Tabela Funcionarios (tb_departamento )
 
 ## 1. Desenvolvendo o Modelo Físico e Criando o Banco de Dados
 
+```sql
 CREATE DATABASE Empresa_RH
+```
 
 ## 1.1 Criando a tabela tb_departamento
 
@@ -133,28 +135,35 @@ A seguir, apresentamos alguns exemplos de como obter insights dos registros feit
 
 ## 4.1 Recuperar todos os funcionários de um determinado departamento.
 
+```sql
 -- Consultando a tabela de Funcionários do departamento Comercial, RH e Engenharia (DQL)
 SELECT 	tb_fun.*
 		, tb_dep.nm_departamento
 		FROM tb_funcionarios tb_fun
 		JOIN tb_departamento tb_dep ON tb_dep.id_departamento = tb_fun.id_departamento
 		WHERE  tb_dep.id_departamento IN (1,3,5);
+```
 
 ## 4.2 Recuperar todos os funcionários que possuem salário maior que um valor especificado.
 
+```sql
 -- Consultando todos os funcionários que possuem salário maior ou igual a R$ 5.000,00
 SELECT * FROM tb_funcionarios 
 		WHERE  salario_funcionario >= 5000;
+```
 
 ## 4.3 Recuperar o nome do departamento e o nome do funcionário que trabalha naquele departamento.
 
+```sql
 SELECT 	  nm_departamento AS Departamento
 		, nm_funcionario AS Funcionario
 		FROM      tb_departamento AS tb_dep 
 		INNER JOIN tb_funcionarios AS tb_fun ON tb_fun.id_departamento = tb_dep.id_departamento;
+```
 
 ## 4.4 Recuperar o nome do departamento e a média salarial dos funcionários de cada departamento. 
 
+```sql
 --A média salarial deve ser calculada para cada departamento individualmente.
 
 SELECT 	tb_dep.nm_departamento
@@ -162,9 +171,11 @@ SELECT 	tb_dep.nm_departamento
 		FROM      tb_departamento AS tb_dep 
 		LEFT JOIN tb_funcionarios AS tb_fun ON tb_fun.id_departamento = tb_dep.id_departamento
 		GROUP BY tb_dep.nm_departamento;
+```
 		
 ## 4.5 Recuperar o nome e o salário dos 3 funcionários com os salários mais altos, ordenados em ordem decrescente de salário.
 
+```sql
 SELECT 	  --nm_departamento AS Departamento
 		 nm_funcionario AS Funcionario
 		, salario_funcionario AS Salario
@@ -173,9 +184,11 @@ SELECT 	  --nm_departamento AS Departamento
 		ORDER BY salario_funcionario DESC
 		LIMIT 3
 		;
+```
 
 ## 4.6 Recuperar o nome dos funcionários que trabalham em departamentos localizados em "São Paulo" e possuem um salário acima da média salarial de todos os funcionários.		
 
+```sql
 UPDATE tb_departamento
   SET local_departamento = 'Sao Paulo'
   WHERE id_departamento = 3;
@@ -190,6 +203,7 @@ SELECT 	--nm_departamento AS Departamento
  		WHERE tb_dep.local_departamento = 'Sao Paulo' AND
 			  tb_fun.salario_funcionario > (SELECT AVG(salario_funcionario) FROM tb_funcionarios)
 			  ;
+```
 
 ## 5. Considerações Finais
 
@@ -210,6 +224,6 @@ O estudo concluiu ressaltando a importância de adquirir prática na manipulaç�
 Para mais informações ou detalhes, entre em contato através do [e-mail](engluizpolicarpo)
 
 
-**Luiz Policarpo** (*Consultor em comércio exterior com experiência de mais de 13 anos no mercado, engenheiro de produção pós graduado em Supply Chain, Logística e Transportes, especializado em regimes aduaneiros especiais de importação e exportação, garantindo conformidade e excelência operacional.*) -  [LinkedIn](https://www.linkedin.com/in/luizpolicarpo/) | [Blog e Artigos](https://einship.com/blog-list) | [Instagram](https://instagram.com/luizpolicarpo)
+**Luiz Policarpo** (*Consultor em Comércio Exterior com experiência de mais de 13 anos no mercado, engenheiro de produção pós graduado em Supply Chain, Logística e Transportes, especializado em regimes aduaneiros especiais de importação e exportação. Apaixonado por Tecnologia, BigData e Ciência de Dados. Ajudo empresas a melhorarem os seus processos no Comex através de soluções tecnológicas*) -  [LinkedIn](https://www.linkedin.com/in/luizpolicarpo/) | [Instagram](https://instagram.com/luizpolicarpo) | [Blog e Artigos](https://einship.com/blog-list)
 
 
